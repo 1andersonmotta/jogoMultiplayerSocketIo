@@ -88,10 +88,8 @@ export default function createGame(h1) {
 
     function movePlayer(command) {
         notifyAll(command)
-
         const acceptMoves = {
             ArrowUp(player) {
-
                 if (player.y - 1 >= 0) {
                     player.y = player.y - 1
                 } else {
@@ -99,7 +97,6 @@ export default function createGame(h1) {
                 }
             },
             ArrowRight(player) {
-
                 if (player.x + 1 < state.screen.width) {
                     player.x = player.x + 1
                 } else {
@@ -107,7 +104,6 @@ export default function createGame(h1) {
                 }
             },
             ArrowDown(player) {
-
                 if (player.y + 1 < state.screen.height) {
                     player.y = player.y + 1
                 } else {
@@ -121,40 +117,48 @@ export default function createGame(h1) {
                 else {
                     player.x = player.x + 9
                 }
-
             },
-
         }
+
         const keyPressed = command.keyPressed
         const playerId = command.playerId
         const player = state.players[command.playerId]
         const moveFunction = acceptMoves[keyPressed]
 
         if (player && moveFunction) {
-            moveFunction(player)
-            checkForFruitCollision(playerId)
-        }
+            if (!player.currentDirection || player.currentDirection !== keyPressed) {
+                player.currentDirection = keyPressed;
+                clearInterval(player.intervalId);
 
-        function checkForFruitCollision(playerId) {
-            const player = state.players[playerId]
-            for (const fruitId in state.fruits) {
-                const fruit = state.fruits[fruitId]
-                console.log(`Checking ${playerId} and ${fruitId}`);
-
-                if (player.x === fruit.x && player.y === fruit.y) {
-                    console.log(`Collision between ${playerId} and ${fruitId}`);
-                    state.players[playerId].points++
-                    if (state.players[playerId].points === 5) {
-                        h1.innerText = `FIM DE JOGO!! PARABÉNS ${playerId}`
-                    }
-                    console.log(`Points ${state.players[playerId].points}`);
-                    removeFruit({ fruitId })
-                }
+                player.intervalId = setInterval(() => {
+                    moveFunction(player);
+                    checkForFruitCollision(playerId);
+                }, 500);
             }
-
         }
 
     }
+
+    function checkForFruitCollision(playerId) {
+        const player = state.players[playerId]
+        for (const fruitId in state.fruits) {
+            const fruit = state.fruits[fruitId]
+            //console.log(`Checking ${playerId} and ${fruitId}`);
+
+            if (player.x === fruit.x && player.y === fruit.y) {
+                //console.log(`Collision between ${playerId} and ${fruitId}`);
+                state.players[playerId].points++
+                if (state.players[playerId].points === 5) {
+                    return h1.innerText = `FIM DE JOGO!! PARABÉNS ${playerId}`
+                }
+                console.log(`Points ${state.players[playerId].points}`);
+                removeFruit({ fruitId })
+            }
+        }
+
+    }
+
+
     return {
         addPlayer,
         removePlayer,
@@ -167,7 +171,7 @@ export default function createGame(h1) {
         start,
 
     }
-
 }
+
 
 

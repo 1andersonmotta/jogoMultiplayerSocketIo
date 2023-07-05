@@ -19,7 +19,7 @@ game.subscribe((command) => {
 
 sockets.on('connection', (socket) => {
     const playerId = socket.id
-    console.log(`Player connected: ${playerId}`);
+    //console.log(`Player connected: ${playerId}`);
 
     game.addPlayer({ playerId: playerId })
     //console.log(game.state);
@@ -28,17 +28,20 @@ sockets.on('connection', (socket) => {
 
     socket.on('disconnect', () => {
         game.removePlayer({ playerId: playerId })
-        console.log(`Player disconnected: ${playerId}`);
+        //console.log(`Player disconnected: ${playerId}`);
     })
 
     socket.on('move-player', (command) => {
         command.playerId = playerId
         command.type = 'move-player'
-
         game.movePlayer(command)
-    })
-})
 
-server.listen(3000, () => {
-    console.log('Server listening on port: 3000');
-})
+    })
+
+
+}),
+    server.listen(3000, () => {
+        console.log('Server listening on port: 3000');
+    })
+
+

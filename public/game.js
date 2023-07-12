@@ -143,13 +143,11 @@ export default function createGame(h1) {
         const player = state.players[playerId]
         for (const fruitId in state.fruits) {
             const fruit = state.fruits[fruitId]
-            //console.log(`Checking ${playerId} and ${fruitId}`);
 
             if (player.x === fruit.x && player.y === fruit.y) {
-                //console.log(`Collision between ${playerId} and ${fruitId}`);
                 state.players[playerId].points++
                 if (state.players[playerId].points === 5) {
-                    return h1.innerText = `FIM DE JOGO!! PARABÉNS ${playerId}`
+                    return h1.innerText = `FIM DE JOGO!! PARABÉNS`
                 }
                 console.log(`Points ${state.players[playerId].points}`);
                 removeFruit({ fruitId })

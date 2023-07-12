@@ -34,8 +34,6 @@
 
         socket.on('connect', () => {
             const playerId = socket.id
-            // console.log(`Player connected on Client with id: ${playerId}`);
-
             const screen = document.getElementById('screen')
             renderScreen(screen, game, requestAnimationFrame, playerId)
         })
@@ -54,17 +52,14 @@
         })
 
         socket.on('add-player', (command) => {
-            //console.log(`Receiving ${command.type} -> ${command.playerId}`);
             game.addPlayer(command)
         })
 
         socket.on('remove-player', (command) => {
-            // console.log(`Receiving ${command.type} -> ${command.playerId}`);
             game.removePlayer(command)
         })
 
         socket.on('move-player', (command) => {
-            //console.log(`Receiving Moving ${command.type} -> ${command.playerId}`);
             console.log(`comand: ${command.keyPressed}`);
             const playerId = socket.id
 
@@ -74,12 +69,10 @@
         })
 
         socket.on('add-fruit', (command) => {
-            //console.log(`Receiving ${command.type} -> ${command.fruitId}`);
             game.addFruit(command)
         })
 
         socket.on('remove-fruit', (command) => {
-            //console.log(`Receiving ${command.type} -> ${command.fruitId}`);
             game.removeFruit(command)
         })
 

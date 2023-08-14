@@ -27,7 +27,7 @@ Navegador
 
 ## Contribuição
 
-Se você tem alguma Sugestão enviar para devandersonmotta@gmail.com com o assunto: "contribuição sitess" ou entre em contato pelo Linkedin.
+Se você tem alguma Sugestão enviar para devandersonmotta@gmail.com com o assunto: "contribuição jogo multiplayer" ou entre em contato pelo Linkedin.
 
 ## Licença
 

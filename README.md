@@ -7,8 +7,10 @@ Projeto de criação de um Jogo Multiplayer utilizando SocketIO, JavaScript e HT
 
 ## Pré-requisitos
 
-Visual Studio Code
-NPM
+Visual Studio Code  
+
+NPM  
+
 Navegador
 
 ## Uso

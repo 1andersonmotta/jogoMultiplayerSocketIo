@@ -3,7 +3,7 @@
 ![Se necessário atualize a página para carregamento do GIF](game.gif)
 
 Projeto de criação de um Jogo Multiplayer utilizando SocketIO, JavaScript e HTML5.
-- [Playlist](https://www.youtube.com/watch?v=0sTfIZvjYJk)
+- [Playlist inspiração Filipe Deschamps](https://www.youtube.com/watch?v=0sTfIZvjYJk)
 
 ## Pré-requisitos
 
